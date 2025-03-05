@@ -1,20 +1,5 @@
 # Neurophysiological Signal Processing and Analysis
-This repository contains an extensive collection of tools and scripts specifically designed for the processing and analysis of neurophysiological signals. The primary focus of this software is on various critical aspects of neurophysiological data handling, including:
-
-1. **Spike Detection**: The software offers sophisticated algorithms for identifying spikes in neural recordings. These algorithms are imperative for understanding neuronal activity as spikes are fundamental signals that indicate when a neuron fires.
-
-2. **Feature Extraction**: Once spikes are detected, the next step is to extract relevant features that can provide insights into the characteristics of these spikes and the overall neuronal activity. This may include metrics such as spike amplitude, duration, frequency, and inter-spike intervals.
-
-3. **Clustering**: The repository also includes tools for clustering detected spikes. Clustering is essential for grouping similar spike events, which can help distinguish between different neuronal populations or types of spikes, enhancing the analysis of brain activity.
-
-4. **Firing Rate Analysis**: Firing rate analysis allows researchers to quantify the frequency of neuron firing over time, providing crucial insights into neuronal behavior under various conditions.
-
-The software is intended for researchers and practitioners in the field of neuroscience who require reliable and efficient tools to analyze complex neural data. Overall, this repository is an invaluable resource for enhancing our understanding of neural dynamics and functions.
-
-This repository contains tools and scripts for processing and analyzing neurophysiological signals, focusing on spike detection, feature extraction, clustering, and firing rate analysis. Below is an overview of the steps involved in the pipeline and the functionalities provided by the software.
-
-
-
+This repository contains an extensive collection of tools and scripts for processing and analyzing neurophysiological signals. The primary focus is on various critical aspects of neurophysiological data handling, including spike detection, feature extraction, clustering, and firing rate analysis. The software is intended for researchers and practitioners in the field of neuroscience who require reliable and efficient tools to analyze complex neural data.
 
 **Related Article**:<br/>
 [Restoring the firing activity of ventral tegmental area neurons by lateral hypothalamic deep brain stimulation following morphine administration in rats](https://www.sciencedirect.com/science/article/abs/pii/S0031938423001348).
