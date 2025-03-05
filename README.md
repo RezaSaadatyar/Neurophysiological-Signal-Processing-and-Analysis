@@ -38,6 +38,31 @@ https://github.com/user-attachments/assets/63ad798b-1b53-4c0c-a431-453ac2859a92
    - Generate and display firing rate figures, ISI histograms, and autocorrelograms.
    - Save results for further analysis.
 
+## Data Preparation
+
+### Data Formats
+The software supports the following data formats for classification:
+1. **MAT Files (`.mat`)**:
+2. **Text Files (`.txt`)**
+3. **Excel Files (`.xlsx`)**:
+
+## Abbreviations
+
+- **Filtering**: Sampling frequency (Fs), Lower cutoff frequency (Flow), Higher cutoff frequency (Fhigh), Passband ripple (Rp), Stopband attenuation (Rs).
+- **Feature Extraction**: Wavelet Transform (WT), Principle Component Analysis (PCA).
+- **Clustering**: Fuzzy C-Means Clustering (FCM), K-means.
+- Firing Rate (FR), Inter-Spike Intervals (ISI), Autocorrelogram
+
+
+## Usage
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/RezaSaadatyar/Neurophysiological-Signal-Processing-and-Analysis
+   ```
+2. Open MATLAB and navigate to the cloned directory.
+3. Run the `main.m` file to launch the graphical user interface.
+
 ## Contributing
 
 Contributions are welcome! Please fork the repository and submit a pull request with your changes.
