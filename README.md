@@ -51,14 +51,6 @@ https://github.com/user-attachments/assets/63ad798b-1b53-4c0c-a431-453ac2859a92
    - Generate and display firing rate figures, ISI histograms, and autocorrelograms.
    - Save results for further analysis.
 
-## Abbreviations
-
-- **Filtering**: Sampling frequency (Fs), Lower cutoff frequency (Flow), Higher cutoff frequency (Fhigh), Passband ripple (Rp), Stopband attenuation (Rs).
-- **Feature Extraction**: Wavelet Transform (WT), Principle Component Analysis (PCA).
-- **Clustering**: Fuzzy C-Means Clustering (FCM), K-means.
-- Firing Rate (FR), Inter-Spike Intervals (ISI), Autocorrelogram
-
-
 ## Usage
 
 1. Clone the repository:
