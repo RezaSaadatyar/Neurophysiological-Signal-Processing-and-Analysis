@@ -9,7 +9,7 @@ This repository contains an extensive collection of tools and scripts specifical
 
 4. **Firing Rate Analysis**: Firing rate analysis allows researchers to quantify the frequency of neuron firing over time, providing crucial insights into neuronal behavior under various conditions.
 
-Additionally, the repository outlines a clear pipeline that guides users through each of these steps, ensuring a comprehensive approach to neurophysiological signal analysis. The software is intended for researchers and practitioners in the field of neuroscience who require reliable and efficient tools to analyze complex neural data. Overall, this repository is an invaluable resource for enhancing our understanding of neural dynamics and functions.
+The software is intended for researchers and practitioners in the field of neuroscience who require reliable and efficient tools to analyze complex neural data. Overall, this repository is an invaluable resource for enhancing our understanding of neural dynamics and functions.
 
 This repository contains tools and scripts for processing and analyzing neurophysiological signals, focusing on spike detection, feature extraction, clustering, and firing rate analysis. Below is an overview of the steps involved in the pipeline and the functionalities provided by the software.
 
