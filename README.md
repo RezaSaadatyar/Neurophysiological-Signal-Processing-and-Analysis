@@ -38,14 +38,6 @@ https://github.com/user-attachments/assets/63ad798b-1b53-4c0c-a431-453ac2859a92
    - Generate and display firing rate figures, ISI histograms, and autocorrelograms.
    - Save results for further analysis.
 
-## Data Preparation
-
-### Data Formats
-The software supports the following data formats for classification:
-1. **MAT Files (`.mat`)**:
-2. **Text Files (`.txt`)**
-3. **Excel Files (`.xlsx`)**:
-
 ## Abbreviations
 
 - **Filtering**: Sampling frequency (Fs), Lower cutoff frequency (Flow), Higher cutoff frequency (Fhigh), Passband ripple (Rp), Stopband attenuation (Rs).
