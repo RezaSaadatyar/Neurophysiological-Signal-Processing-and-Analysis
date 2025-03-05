@@ -1,7 +1,7 @@
 %% =============================================================================================
 % ================================= Spike Extraction Software ==================================
 % ================================ Presented by: Reza Saadatyar ================================
-% ============================== Email: Reza.Saadatyar@outlook.com =============================
+% ============================= E-mail: Reza.Saadatyar@outlook.com =============================
 % ======================================= 2019-2020 ============================================
 
 % Function to filter input data based on user-defined parameters
@@ -136,7 +136,7 @@ end
 if disp == 1
     if ValCBF > 2
         % Design and apply FIR/IIR filter
-        DataFilter = FIR(Input, typeFT, typeCBF, fss, orderr, fll, fhh, rpp, rss); 
+        DataFilter = filter_methods(Input, typeFT, typeCBF, fss, orderr, fll, fhh, rpp, rss); 
     end
     if DataFilter ~= 0
         % Validate sampling frequency

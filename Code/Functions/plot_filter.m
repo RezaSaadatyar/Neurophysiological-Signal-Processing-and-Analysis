@@ -1,7 +1,7 @@
 %% =============================================================================================
 % ================================= Spike Extraction Software ==================================
 % ================================ Presented by: Reza Saadatyar ================================
-% ============================== Email: Reza.Saadatyar@outlook.com =============================
+% ============================= E-mail: Reza.Saadatyar@outlook.com =============================
 % ======================================= 2019-2020 ============================================
 
 function plot_filter(Input, DataFilter, fss, design, display, input, time, time1, time2, ax1, ax2, ...
@@ -41,8 +41,8 @@ time11 = str2double(get(time1, 'string'));  % Start time
 time22 = str2double(get(time2, 'string'));  % End time
 
 % Check if filtered data is available
-if DataFilter == 0
-    msgbox('Please select Parameters in Block Filtering', '', 'warn');  % Show warning if no filtered data
+if DataFilter == 0 % Show warning if no filtered data
+    msgbox('Please select Parameters in Block Filtering', '', 'warn');  
     return;
 end
 
@@ -58,8 +58,8 @@ tim = 0:length(DataFilter) - 1;
 
 % Handle sampling frequency input for specific filter designs
 if (get(design, 'value') == 2) && (Vtime ~= 1)
-    if isnan(fss) || (fss <= 0)
-        fss = str2double(inputdlg({'Enter Fs'}, 'Sampling frequency', [1 44]));  % Prompt for sampling frequency
+    if isnan(fss) || (fss <= 0) % Prompt for sampling frequency
+        fss = str2double(inputdlg({'Enter Fs'}, 'Sampling frequency', [1 44]));  
         if isnan(fss)
             msgbox('Please enter Fs', '', 'warn');  % Show warning if sampling frequency is invalid
             return;

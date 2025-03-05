@@ -1,14 +1,15 @@
 %% =============================================================================================
 % ================================= Spike Extraction Software ==================================
 % ================================ Presented by: Reza Saadatyar ================================
-% ============================== Email: Reza.Saadatyar@outlook.com =============================
+% ============================= E-mail: Reza.Saadatyar@outlook.com =============================
 % ======================================= 2019-2020 ============================================
 
 function plot_spikesorting(xf, spikes, timspk, Labels, index, fss, time7, time8, ...
     Xlim, slid3, tabe3, ax17, ax18, cm, S)
 
 % Set axes properties for fresh plotting
-ax17.NextPlot = 'replaceall'; cla(ax17); axes(ax17); ax18.NextPlot = 'replaceall'; cla(ax18); axes(ax18);
+ax17.NextPlot = 'replaceall'; cla(ax17); axes(ax17); ax18.NextPlot = 'replaceall'; cla(ax18); 
+axes(ax18);
 
 % Get time range and axis limits from GUI inputs
 tim7 = str2double(get(time7, 'string')); % Start time
@@ -42,8 +43,8 @@ if index == 0
 end
 
 % Validate sampling frequency (fss)
-if isnan(fss) || (fss <= 0)
-    fss = str2double(inputdlg({'Enter Fs'}, 'Sampling Frequency ', [1 45])); % Prompt user for sampling frequency
+if isnan(fss) || (fss <= 0) % Prompt user for sampling frequency
+    fss = str2double(inputdlg({'Enter Fs'}, 'Sampling Frequency ', [1 45]));
     if isnan(sum(fss(:))) || isempty(fss)
         msgbox('Please Enter Fs as scalars', '', 'warn');
         return;
@@ -62,14 +63,16 @@ if S.second.Value == 1
 elseif S.minute.Value == 1
     tim = tim / fss / 60; % Convert to minutes
     if tim(end) / 60 < 1
-        msgbox(['Please Select Second; Total time: ', num2str(round(tim(end) * 60, 3)), ' Second'], '', 'warn');
+        msgbox(['Please Select Second; Total time: ', num2str(round(tim(end) * 60, 3)), ' Second'], ...
+            '', 'warn');
         return;
     end
     index = index / fss / 60; timspk = timspk / fss / 60; tim4 = 'Time (Min)';
 elseif S.hour.Value == 1
     tim = tim / fss / 3600; % Convert to hours
     if tim(end) / 3600 < 1
-        msgbox(['Please Select Minute; Total time: ', num2str(round(tim(end) * 3600, 3)), ' Minute'], '', 'warn');
+        msgbox(['Please Select Minute; Total time: ', num2str(round(tim(end) * 3600, 3)), ' Minute'], ...
+            '', 'warn');
         return;
     end
     index = index / fss / 3600; timspk = timspk / fss / 3600; tim4 = 'Time (Hour)';
@@ -81,17 +84,20 @@ if isnan(tim7) || (tim7 < 0) || (tim7 >= tim(end))
     return;
 end
 if isnan(tim8) || (tim8 < 0) || (tim8 <= tim7) || (tim8 >= tim(end))
-    msgbox(['Please Enter Second value; ', num2str(round(tim7, 3)), ' < Value < ', num2str(round(tim(end), 3))], '', 'warn');
+    msgbox(['Please Enter Second value; ', num2str(round(tim7, 3)), ' < Value < ', ...
+        num2str(round(tim(end), 3))], '', 'warn');
     return;
 end
 if isnan(dx) || (dx < 0) || (dx > tim8)
-    msgbox(['Please Enter Width_axes; 0 < Width_axes < ', num2str(tim8))], '', 'warn');
+    msgbox(['Please Enter Width_axes; 0 < Width_axes < ', num2str(tim8)], '', 'warn');
     return;
 end
 
 % Find indices for the specified time range
 I1 = find(tim == tim7); I2 = find(tim == tim8); % Indices for time range
-I3 = find(index >= tim7, 1, 'first'); I4 = find(index <= tim8, 1, 'last'); % Indices for spikes in the range
+
+% Indices for spikes in the range
+I3 = find(index >= tim7, 1, 'first'); I4 = find(index <= tim8, 1, 'last');
 
 % Set thresholds for spike detection based on user selection
 if S.plotmanual.Value == 1
@@ -101,8 +107,8 @@ else
         Sigma1 = str2double(S.thrmi.String); % Positive peak threshold
     elseif S.npeak.Value == 1
         Sigma2 = str2double(S.thrmineg.String); % Negative peak threshold
-    elseif S.bpeak.Value == 1
-        Sigma1 = str2double(S.thrmi.String); Sigma2 = str2double(S.thrmineg.String); % Both thresholds
+    elseif S.bpeak.Value == 1 % Both thresholds
+        Sigma1 = str2double(S.thrmi.String); Sigma2 = str2double(S.thrmineg.String); 
     end
 end
 
@@ -117,7 +123,8 @@ for i = L
             ax17.NextPlot = 'add'; % Allow multiple plots on the same axes
         end
     end
-    Data(i, :) = [length(find(Labels1 == i)), length(find(Labels == i))]; % Update cluster statistics
+    % Update cluster statistics
+    Data(i, :) = [length(find(Labels1 == i)), length(find(Labels == i))]; 
 end
 
 % Set axes properties for spike plot

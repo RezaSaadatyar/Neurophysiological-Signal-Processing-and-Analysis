@@ -1,7 +1,7 @@
 %% =============================================================================================
 % ================================= Spike Extraction Software ==================================
 % ================================ Presented by: Reza Saadatyar ================================
-% ============================== Email: Reza.Saadatyar@outlook.com =============================
+% ============================= E-mail: Reza.Saadatyar@outlook.com =============================
 % ======================================= 2019-2020 ============================================
 
 % Function to calculate the firing rate of spikes
@@ -10,6 +10,9 @@ function [Firing_Rate, Time_Firing] = firing_rate(xf, fss, index, Labels, binTim
 % Initialize output variables and reset GUI flags
 Firing_Rate = 0; Time_Firing = 0; 
 S.spikepersec.Value = 0; S.countperbin.Value = 0;
+
+% Clear axes and prepare for plotting
+cla(S.ax(19)); axes(S.ax(19)); cla(S.ax(20)); axes(S.ax(20)); S.ax(19).NextPlot = 'replaceall'; 
 
 % Retrieve the bin size for firing rate calculation
 Win = str2double(get(binFR, 'string')); 
@@ -72,7 +75,8 @@ if max(Labels) > 1
         spk_times = index(Labels == unit_fr)'; % Spike times for the current unit
         for i = 1:length(Time_Firing)
             % Count spikes in the current bin and normalize by bin size
-            Firing_Rate(unit_fr + 1, i) = sum(spk_times <= Time_Firing(i) + Win & spk_times > Time_Firing(i)) / Win;
+            Firing_Rate(unit_fr + 1, i) = sum(spk_times <= Time_Firing(i) + Win & spk_times > ...
+                Time_Firing(i)) / Win;
         end
     end
 end

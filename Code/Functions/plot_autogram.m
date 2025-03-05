@@ -1,7 +1,7 @@
 %% =============================================================================================
 % ================================= Spike Extraction Software ==================================
 % ================================ Presented by: Reza Saadatyar ================================
-% ============================== Email: Reza.Saadatyar@outlook.com =============================
+% ============================= E-mail: Reza.Saadatyar@outlook.com =============================
 % ======================================= 2019-2020 ============================================
 
 function plot_autogram(Autoc, Xbin, plotautogram, maxnInte, minInte, bin, ax23, ax24, cm)
@@ -43,14 +43,15 @@ if get(plotautogram, 'value')
     end
 
     % Check if the minimum interval is valid
-    if isnan(Min_Interval) || (Min_Interval < 0)
-        msgbox('Please Enter Min_Interval >= 0', '', 'warn');  % Show warning if minimum interval is invalid
+    if isnan(Min_Interval) || (Min_Interval < 0) % Show warning if minimum interval is invalid
+        msgbox('Please Enter Min_Interval >= 0', '', 'warn');  
         return;
     end
 
     % Check if the maximum interval is valid
     if isnan(Max_Interval) || (Max_Interval < 0) || (Max_Interval <= Min_Interval)
-        msgbox('Please Enter Max_Interval > Min_Interval', '', 'warn');  % Show warning if maximum interval is invalid
+        % Show warning if maximum interval is invalid
+        msgbox('Please Enter Max_Interval > Min_Interval', '', 'warn');  
         return;
     end
 

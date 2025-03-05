@@ -1,7 +1,7 @@
 %% =============================================================================================
 % ================================= Spike Extraction Software ==================================
 % ================================ Presented by: Reza Saadatyar ================================
-% ============================== Email: Reza.Saadatyar@outlook.com =============================
+% ============================= E-mail: Reza.Saadatyar@outlook.com =============================
 % ======================================= 2019-2020 ============================================
 
 function pcafea = plot_pca(spikes, PcaSpik, Feat1, Feat2, Feat3, dispca, diswave, ax8, ax9, ax10, ...
@@ -47,7 +47,8 @@ if get(dispca, 'value') == 1
 
         % Validate the feature indices for 2D plots
         if isnan(Feat1) || isnan(Feat2) || (Feat1 == Feat2) || (Feat1 > size(spikes, 2)) || (Feat2 > size(spikes, 2))
-            msgbox(['Please Enter Feature 1 & Feature 2; Feature 1 ~= Feature 2; Feature 1 & Feature 2 < ', num2str(size(spikes, 2))], '', 'warn');
+            msgbox(['Please Enter Feature 1 & Feature 2; Feature 1 ~= Feature 2; Feature 1 & Feature 2 < ', ...
+                num2str(size(spikes, 2))], '', 'warn');
             return; % Exit if feature indices are invalid
         end
     else
@@ -70,7 +71,7 @@ if get(dispca, 'value') == 1
     PcaSpik = (PcaSpik - min(PcaSpik)) ./ (max(PcaSpik) - min(PcaSpik));
 
     % Call the plotting function with the selected features
-    PF(spikes, PcaSpik, Feat1, Feat2, Feat3, Feat, til, ax8, ax9, ax10, ax11, cm, S);
+    plot_features(spikes, PcaSpik, Feat1, Feat2, Feat3, Feat, til, ax8, ax9, ax10, ax11, cm, S);
 
     % Prepare the output features based on the plot type (2D or 3D)
     if S.plot2D.Value == 1

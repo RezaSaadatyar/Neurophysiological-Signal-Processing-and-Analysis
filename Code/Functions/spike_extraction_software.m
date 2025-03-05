@@ -1,7 +1,7 @@
 %% =============================================================================================
 % ================================= Spike Extraction Software ==================================
 % ================================ Presented by: Reza Saadatyar ================================
-% ============================== Email: Reza.Saadatyar@outlook.com =============================
+% ============================= E-mail: Reza.Saadatyar@outlook.com =============================
 % ======================================= 2019-2020 ============================================
 
 function spike_extraction_software
@@ -61,7 +61,7 @@ S.radio=uicontrol('parent',S.L3,'style','radio','string','Clear all Parameters &
 'unit','norm','Position',[0.008 0.21 0.51 0.85],'Fontweight','bold','FontSize',11,'FontName',...
 'Times New Roman','HorizontalAlignment','left','value',0);
 % Input
-S.L3=uipanel('parent',S.L2,'Title','Select Input:','unit','norm','Position',...
+S.L3=uipanel('parent',S.L2,'Title','Select Input','unit','norm','Position',...
 [0.01 0.35 0.98 0.35],'Fontweight','bold','FontSize',12,'FontName','Times New Roman');
 S.inp=uicontrol('parent',S.L3,'style','popupmenu','string','Select:','unit','norm',...
 'Position',[0.01 0.65 0.2971 0.2],'Fontweight','bold','FontSize',11,'FontName',...
@@ -73,7 +73,7 @@ S.radio1=uicontrol('parent',S.L3,'style','radio','string','Active','unit',...
 'norm','Position',[0.008 0.2 0.15 0.85],'Fontweight','bold','FontSize',11,'FontName',...
 'Times New Roman','HorizontalAlignment','left','value',0);
 % Channel
-S.L3=uipanel('parent',S.L1,'Title','Select Input Channels:','unit','norm','Position',...
+S.L3=uipanel('parent',S.L1,'Title','Select Input Channels','unit','norm','Position',...
 [0.013 0.03 0.97 0.22],'Fontweight','bold','FontSize',12,'FontName','Times New Roman',...
 'BorderWidth',2);
 S.input=uicontrol('parent',S.L3,'style','popupmenu','string','Select:','unit',...
@@ -189,7 +189,7 @@ S.display=uicontrol('parent',S.L2,'style','popupmenu','string',{'Select:';'Part 
 'All Data'},'unit','norm','Position',[0.555 0.39 0.4 0.1],...
 'Fontweight','bold','FontSize',11,'FontName','Times New Roman','HorizontalAlignment',...
 'left');
-S.t1=uicontrol('parent',S.L2,'style','text','string','Select Time Type:','unit',...
+S.t1=uicontrol('parent',S.L2,'style','text','string','Select Time Type','unit',...
 'norm','Position',[0.025 0.165 0.49 0.15],'Fontweight','bold','FontSize',11,'FontName',...
 'Times New Roman','HorizontalAlignment','left');
 S.time=uicontrol('parent',S.L2,'style','popupmenu','string',{'Sample';'Second';'Minute';...
@@ -542,10 +542,10 @@ S.manual=uicontrol('parent',S.center,'style','radiobutton','Fontweight','bold',.
 S.auto=uicontrol('parent',S.center,'style','radiobutton','Fontweight','bold','FontSize',...
 11,'FontName','Times New Roman','string','Automatic','unit','norm','pos',[0.55 .2 .5 .5]);
 align([S.manual,S.auto],'Distribute','Middle');
-S.cursor=uicontrol('parent',S.L2,'style','check','string','Enable Cursor Mode',...
+S.cursor = uicontrol('parent',S.L2,'style','check','string','Enable Cursor Mode',...
 'unit','norm','Position',[0.01 0.07 0.323 0.3],'Fontweight','bold','FontSize',12,...
-'FontName','Times New Roman','HorizontalAlignment','left', 'Value', 1);
-S.t1=uicontrol('parent',S.L2,'style','text','string','Select Cluster Type:','unit',...
+'FontName','Times New Roman','HorizontalAlignment','left', 'Value', 0);
+S.t1=uicontrol('parent',S.L2,'style','text','string','Select Cluster Type','unit',...
 'norm','Position',[0.45 0.48 0.7 0.33],'Fontweight','bold','FontSize',12,...
 'FontName','Times New Roman','HorizontalAlignment','left');
 S.clus=uicontrol('parent',S.L2,'style','popupmenu','string',{'FCM';'K-means'},'unit','norm', ...
@@ -655,7 +655,7 @@ S.Xlim=uicontrol('parent',S.L3,'style','edit','string','1000','unit','norm','Pos
 [0.35 0.03 0.26 0.32],'Fontweight','bold','FontSize',11,'FontName','Times New Roman');
 S.tabe3=uitable(S.L2,'position',[437 10 249 82],'RowName',{'Class 1';'Class 2';'Class 3'},...
 'Data',{},'ColumnName',{'# Selected Spikes';'# Total Spikes'},'ColumnWidth','auto','FontSize',10);
-%% ====================== Firing Rat & ISI & Autocorrelogram ==============
+%% ============================= Firing Rat & ISI & Autocorrelogram ============================
 tab1=uitab('parent',tg,'Title','<html><font name="Times New Roman" size=5 color="#800080"><b>Firing Rate & ISI & Autocorrelogram</font></html>');
 S.t1=uicontrol('parent',tab1,'style','text','string','Step 6','unit','norm',...
 'Position',[0.3 0.965 0.4 0.037],'Fontweight','bold','FontSize',16,'FontName',...
@@ -755,7 +755,7 @@ S.ax(23)=axes('Parent',S.L2,'unit','norm','position',[0.1 0.2 0.88 0.6],'box','o
 S.ax(24)=uipanel('Parent',tab1,'Title','Autocorrelogram Single Uint Figure','unit','norm',...
 'position',[0.503 0.02 0.49 0.96],'ShadowColor',[128,128,0]/255,'Fontweight','bold','FontSize',11.5,...
 'FontName','Times New Roman','BorderWidth',2);
-%% =========================== uicontextmenu   ============================
+%% ========================================= uicontextmenu =====================================
 cm=uicontextmenu;uimenu('parent',cm,'label','Save','callback',@Save);
 uimenu('parent',cm,'label','New Figure','callback',@NewFigure);
 uimenu('parent',cm,'label','Subplot','callback',@Subplot);
@@ -786,17 +786,17 @@ uimenu('parent',CCCCC,'label','4','callback',@Linewidth);
 % uimenu('parent',CM,'label','Save','callback',@Save);
 % uimenu('parent',CM,'label','New Figure','callback',@NewFigure);
 % uimenu('parent',CM,'label','Subplot','callback',@Subplot);
-%% =================================== Help ===============================
+%% ============================================== Help =========================================
 tab9=uitab('parent',tg,'Title','<html><font name="Times New Roman" size=5 color="blue"><b>Help</font></html>');
 help(tab9)
 tab10=uitab('parent',tg,'Title','<html><font name="Times New Roman" size=5 color="k"><b>Contact</font></html>');
 contact(tab10)
-%% ========================= Variables ====================================
+%% ======================================= Variables ===========================================
 Data=0;FF=0;str=0;Input=0;Inputch=0;values=0;DataFilter=0;fss=0;xf=0;Sigma=0;
 spikes=0;index=0;timspk=0;Diff1=0;PcaSpik=0;pcafea=0;waveletSpik=0;wavfea=0;InputClust=0;
 Labels=0;Raster=0;MeanSpike=0;MeanPhaseSpaces=0;Firing_Rate=0;Time_Firing=0;ISI=0;
 ISI_centers=0;Autoc=0;Xbin=0;
-%% ================= Setting callbacks ==================================
+%% ================================= Setting callbacks =========================================
 set(S.load,'callback',{@Load_Callback,S});set(S.text1,'callback',{@Text1_Callback,S});
 set(S.radio,'callback',{@Radio_Callback,S});set(S.inp,'callback',{@Inp_Callback,S});
 set(S.radio1,'callback',{@Radio1_Callback,S});set(S.input,'callback',{@Input_Callback,S});
@@ -851,40 +851,44 @@ set(S.bin,'Callback',{@Bin_Callback,S});set(S.plotISI,'Callback',{@PlotISI_Callb
 set(S.sISI,'Callback',{@SISI_Callback,S});set(S.plotautogram,'Callback',{@Plotautogram_Callback,S});
 set(S.sautogram,'Callback',{@Sautogram_Callback,S});
 %% ====================================== Step 1 ===============================================
-function Load_Callback(~,~,handles);[str,FF,Data,values]=load_data(handles.inp,handles.text1);end %Load
+function Load_Callback(~,~,handles);[str,FF,Data,values] = load_data(handles.inp,handles.text1);end %Load
 function Radio_Callback(~, ~, ~)
 [Inputch,DataFilter,Input,fss,Sigma,xf,index,spikes,timspk,Diff1,PcaSpik,pcafea,waveletSpik,...
 wavfea,InputClust,Labels,Raster,MeanSpike,MeanPhaseSpaces,Firing_Rate,Time_Firing,ISI,...
-ISI_centers,Autoc,Xbin]=clear_parameters(S);end %clear Parameters
+ISI_centers,Autoc,Xbin] = clear_parameters(S);end %clear Parameters
 function Inp_Callback(~, ~, handles) %Input
-[Inputch,DataFilter]=select_input(Data,str,values,FF,handles.radio,handles.input,handles.inp,handles.radio1);
+[Inputch,DataFilter] = select_input(Data,str,values,FF,handles.radio,handles.input,handles.inp,handles.radio1);
 end
 function Input_Callback(~,~,handles) %Channel
-Input=select_channels(Inputch,handles.Chi,handles.Chj,handles.input,handles.inp,handles.checkFil);end
+Input = select_channels(Inputch,handles.Chi,handles.Chj,handles.input,handles.inp,handles.checkFil);end
 %% ====================================== Step 2 ===============================================
 function Design_Callback(~, ~, handles)
-[DataFilter,fss,Sigma]=data_filtered(Input,handles.fs,handles.fl,handles.fh,handles.rp,...
+[DataFilter,fss,Sigma] = data_filtered(Input,handles.fs,handles.fl,handles.fh,handles.rp,...
 handles.rs,handles.order,handles.design,handles.response,handles.window,handles.checkFil,...
 handles.Fnotch,handles.notch,handles.display,handles.tabel,handles.time1,handles.time2,...
 handles.time,S);
 end
-function Display_Callback(~, ~, handles) %PLOT Filter  
+function Display_Callback(~, ~, handles) %Plot filter  
 plot_filter(Input,DataFilter,fss,handles.design,handles.display,handles.input,handles.time,...
 handles.time1,handles.time2,S.ax(1),S.ax(2),CM,cm)  
 end
 %% ====================================== Step 3 ===============================================
 function Inputs_Callback(~, ~, handles)
-[xf, Sigma]=input_spike(Data,DataFilter,handles.inputs,handles.thrmi,handles.thrma,...
+[xf, Sigma] = input_spike(Data,DataFilter,handles.inputs,handles.thrmi,handles.thrma,...
 handles.thrmineg,handles.time3,handles.time4,handles.time5,handles.time6,S);    
 end
 function Thresh_Callback(~, ~, handles) % Threshold 
-[index,spikes,timspk]=threshold(xf,fss,Sigma,handles.detec,handles.thresh,handles.thrmi,...
+[index,spikes,timspk] = threshold(xf,fss,Sigma,handles.detec,handles.thresh,handles.thrmi,...
 handles.thrmineg,handles.thrma,handles.pre,handles.pos,handles.pren,handles.posn,...
 handles.alig,handles.Exec,handles.time3,handles.time4,handles.time5,handles.time6,...
 handles.waw,handles.slid1,handles.slid2,S.tabe2,S.ax(3),S.ax(4),S.ax(5),CM,cm,S);    
 end 
-function Dspikeven_Callback(~, ~,handles);plot_spike_event(spikes,fss,handles.dspikeven,S.ax(6),cm);end % Plot Spike Events 
-function Dphaspace_Callback(~, ~,handles);Diff1=plot_phase_spaces(spikes,handles.dphaspace,S.ax(7),cm);end % Plot Phase Spaces
+function Dspikeven_Callback(~, ~,handles) % Plot Spike Events 
+    plot_spike_event(spikes,fss,handles.dspikeven,S.ax(6),cm);
+end
+function Dphaspace_Callback(~, ~,handles) % Plot Phase Spaces
+    Diff1 = plot_phase_spaces(spikes,handles.dphaspace,S.ax(7),cm);
+end
 %% ======================================= Step 4 ==============================================
 function TIkpca_Callback(~, ~, handles) %PCA
 PcaSpik = pca_feature(spikes,handles.Tikpca,handles.dispca,handles.diswave);end
@@ -926,8 +930,8 @@ function PlotFR_Callback(~, ~, handles)
 plot_firing_rate(Firing_Rate,Time_Firing,handles.binTime,handles.binFR,S.ax(19),S.ax(20),cm,S);
 end
 function MaxnInte_Callback(~, ~, handles) %ISI
-[ISI,ISI_centers,Autoc,Xbin]=isi(index,Labels,fss,handles.binTime,handles.plotISI,...
-handles.plotautogram,handles.maxnInte,handles.minInte,handles.bin);
+[ISI,ISI_centers,Autoc,Xbin] = isi(index,Labels,fss,handles.binTime,handles.plotISI,...
+handles.plotautogram,handles.maxnInte,handles.minInte,handles.bin, S);
 end
 function PlotISI_Callback(~, ~, handles)
 plot_isi(ISI,ISI_centers,handles.plotISI,handles.bin,S.ax(21),S.ax(22),cm)

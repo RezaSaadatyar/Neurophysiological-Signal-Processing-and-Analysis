@@ -1,7 +1,7 @@
 %% =============================================================================================
 % ================================= Spike Extraction Software ==================================
 % ================================ Presented by: Reza Saadatyar ================================
-% ============================== Email: Reza.Saadatyar@outlook.com =============================
+% ============================= E-mail: Reza.Saadatyar@outlook.com =============================
 % ======================================= 2019-2020 ============================================
 
 function plot_firing_rate(Firing_Rate, Time_Firing, binTime, binFR, ax19, ax20, cm, S)
@@ -29,8 +29,8 @@ ti = ['; bin = ', num2str(Win) ' Sec'];  % Default bin size label
 typ = 'Spikes/Sec';  % Default firing rate unit
 
 % Check if firing rate data is available
-if Firing_Rate == 0
-    msgbox('Please Select Firing Rate parameters', '', 'warn');  % Show warning if no firing rate data
+if Firing_Rate == 0 % Show warning if no firing rate data
+    msgbox('Please Select Firing Rate parameters', '', 'warn');  
     return;
 end
 

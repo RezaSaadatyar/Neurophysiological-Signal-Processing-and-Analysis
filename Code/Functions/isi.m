@@ -1,15 +1,19 @@
 %% =============================================================================================
 % ================================= Spike Extraction Software ==================================
 % ================================ Presented by: Reza Saadatyar ================================
-% ============================== Email: Reza.Saadatyar@outlook.com =============================
+% ============================= E-mail: Reza.Saadatyar@outlook.com =============================
 % ======================================= 2019-2020 ============================================
 
 % Define the function `isi` to calculate interspike intervals (ISI) and autocorrelograms
 function [ISI, ISI_centers, Autoc, Xbin] = isi(index, Labels, fss, binTime, plotISI, ...
-    plotautogram, maxnInte, minInte, bin)
+    plotautogram, maxnInte, minInte, bin, S)
 
 % Initialize output variables
 ISI = 0; ISI_centers = 0; Autoc = 0; Xbin = 0;
+
+% Clear axes and prepare for plotting
+cla(S.ax(21)); axes(S.ax(21)); cla(S.ax(22)); axes(S.ax(22)); S.ax(21).NextPlot = 'replaceall'; 
+cla(S.ax(23)); axes(S.ax(23)); cla(S.ax(24)); axes(S.ax(24)); S.ax(23).NextPlot = 'replaceall'; 
 
 % Retrieve user inputs from GUI controls
 Bin = str2double(get(bin, 'string')); % Bin size for ISI and autocorrelogram

@@ -1,7 +1,7 @@
 %% =============================================================================================
 % ================================= Spike Extraction Software ==================================
 % ================================ Presented by: Reza Saadatyar ================================
-% ============================== Email: Reza.Saadatyar@outlook.com =============================
+% ============================= E-mail: Reza.Saadatyar@outlook.com =============================
 % ======================================= 2019-2020 ============================================
 
 % Function to clear and reset all parameters and GUI elements
@@ -34,7 +34,8 @@ S.tabe2.Data=[];cla(S.ax(3));cla(S.ax(4));cla(S.ax(5));cla(S.ax(6));cla(S.ax(7))
 % Reset PCA and wavelet analysis parameters
 S.Tikpca.Value=0;S.Feat1.String='1';S.Feat2.String='2';S.Feat3.String='3';S.dispca.Value=0;
 S.Tikwavelet.Value=0;S.wave.Value=1;S.leve.Value=1;S.Feat31.String='1';S.Feat32.String='2';
-S.Feat33.String='3';S.diswave.Value=0;cla(S.ax(8));cla(S.ax(9));cla(S.ax(10));cla(S.ax(11)); % Clear axes 8-11
+% Clear axes 8-11
+S.Feat33.String='3';S.diswave.Value=0;cla(S.ax(8));cla(S.ax(9));cla(S.ax(10));cla(S.ax(11));
 
 % Reset clustering and visualization parameters
 S.inpclust.Value=1;S.plotc.Value=0;S.manual.Value=0;S.auto.Value=0;S.cursor.Value=0;

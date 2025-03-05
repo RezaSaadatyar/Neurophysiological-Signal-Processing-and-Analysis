@@ -1,7 +1,7 @@
 %% =============================================================================================
 % ================================= Spike Extraction Software ==================================
 % ================================ Presented by: Reza Saadatyar ================================
-% ============================== Email: Reza.Saadatyar@outlook.com =============================
+% ============================= E-mail: Reza.Saadatyar@outlook.com =============================
 % ======================================= 2019-2020 ============================================
 
 function [index, spikes, timspk] = threshold(xf, fss, Sigma, detec, thresh, thrmi, thrmineg, thrma, ...
@@ -10,6 +10,12 @@ function [index, spikes, timspk] = threshold(xf, fss, Sigma, detec, thresh, thrm
 
 % Initialize variables
 index = 0; spikes = 0; timspk = 0; S.Tikpca.Value = 0; S.Tikwavelet.Value = 0;
+
+% Clear axes and prepare for plotting
+cla(ax3); axes(ax3); cla(ax4); axes(ax4); ax3.NextPlot = 'replaceall'; ax4.NextPlot = 'replaceall';
+
+% Plot the original signal and thresholds
+cla(ax5); axes(ax5); ax5.NextPlot = 'replaceall';
 
 % Check if no input type is selected for spike detection
 if (S.rawS.Value == 0) && (S.filterS.Value == 0) && (S.derivS.Value == 0)
@@ -124,7 +130,7 @@ set(slid2, 'Min', Mi, 'Max', Ma, 'Value', 5 * Sigma, 'SliderStep', [stepSize 100
 % Check if execution is enabled and manual mode is not selected
 if (get(Exec, 'value') == 0) && (S.plotmanual.Value ~= 1); return; end
 % Detect spikes using the DetectEvent function
-[index, spikes, timspk] = DetectEvent(xf, Vpre, Vpos, Vpren, Vposn, Valig, Vslid, S);
+[index, spikes, timspk] = detect_event(xf, Vpre, Vpos, Vpren, Vposn, Valig, Vslid, S);
 % Update the table with results
 set(tabe2, 'Data', [Sigma; Vslid; length(index)]);
 
@@ -153,7 +159,8 @@ end
 if get(time3, 'value') == 1
     set(time5, 'enable', 'on'); set(time6, 'enable', 'on');
     if isnan(tim5) || (tim5 < 0) || (tim5 > tim(end))
-        msgbox(['Please Enter First value; 0 < Value <', num2str(round(tim(end), 3))], '', 'warn'); return;
+        msgbox(['Please Enter First value; 0 < Value <', num2str(round(tim(end), 3))], '', 'warn');
+        return;
     end
     if isnan(tim6) || (tim6 < 0) || (tim6 <= tim5) || (tim6 > tim(end))
         msgbox(['Please Enter Number Second value; ', num2str(round(tim5, 3)), '  <  Value <', ...
@@ -172,8 +179,8 @@ if dx >= tim6
     msgbox(['Please Enter Width_axis < ', num2str(tim6)], '', 'warn'); return;
 end
 
-% Clear axes and prepare for plotting
-cla(ax3); axes(ax3); cla(ax4); axes(ax4); ax3.NextPlot = 'replaceall'; ax4.NextPlot = 'replaceall';
+% % Clear axes and prepare for plotting
+% cla(ax3); axes(ax3); cla(ax4); axes(ax4); ax3.NextPlot = 'replaceall'; ax4.NextPlot = 'replaceall';
 
 % Plot detected spikes
 if ~isempty(INDEX)
@@ -187,18 +194,22 @@ if ~isempty(INDEX)
     title(til, ['Total Spikes:', num2str(length(INDEX))]);
 end
 
-% Plot the original signal and thresholds
-cla(ax5); axes(ax5); ax5.NextPlot = 'replaceall';
-p = plot(ax5, tim(I1:I2), xf(I1:I2)); hold on; plot(ax5, [tim(I1) tim(I2)], [Sigma, Sigma], '--k', 'linewidth', 2);
+% % Plot the original signal and thresholds
+% cla(ax5); axes(ax5); ax5.NextPlot = 'replaceall';
+p = plot(ax5, tim(I1:I2), xf(I1:I2)); hold on; plot(ax5, [tim(I1) tim(I2)], [Sigma, Sigma], '--k', ...
+    'linewidth', 2);
 
 % Plot thresholds based on detection type
 if S.ppeak.Value == 1 % Positive peak detection
-    Y1 = plot(ax5, [tim5 tim6], 5 * [Sigma, Sigma], '--r', 'linewidth', 2); Leg = {['Thr^+:', num2str(5 * Sigma)]};
+    Y1 = plot(ax5, [tim5 tim6], 5 * [Sigma, Sigma], '--r', 'linewidth', 2); Leg = {['Thr^+:', 
+        num2str(5 * Sigma)]};
 elseif S.npeak.Value == 1 % Negative peak detection
     set(slid2, 'Value', -5 * Sigma);
-    Y1 = plot(ax5, [tim5 tim6], 5 * [-Sigma, -Sigma], '--r', 'linewidth', 2); Leg = {['Thr^-:', num2str(5 * Sigma)]};
+    Y1 = plot(ax5, [tim5 tim6], 5 * [-Sigma, -Sigma], '--r', 'linewidth', 2); Leg = {['Thr^-:',
+        num2str(5 * Sigma)]};
 elseif S.bpeak.Value == 1 % Both positive and negative peaks detection
-    Y1 = plot(ax5, [tim5 tim6], 5 * [Sigma, Sigma], '--r', 'linewidth', 2); Y2 = plot(ax5, [tim5 tim6], 5 * [-Sigma, -Sigma], '--r', 'linewidth', 2);
+    Y1 = plot(ax5, [tim5 tim6], 5 * [Sigma, Sigma], '--r', 'linewidth', 2); Y2 = plot(ax5, [tim5 tim6], ...
+        5 * [-Sigma, -Sigma], '--r', 'linewidth', 2);
     Leg = {['Thr^+:', num2str(5 * Sigma)]; ['Thr^-:', num2str(-5 * Sigma)]};
 end
 legend(ax5, ['Signal'; ['\sigma: ', num2str(Sigma)]; Leg], 'Orientation', 'horizontal');
@@ -232,7 +243,8 @@ function Sli1(~, ~, ~)
     if round(Vslid1) <= tim5 / dx
         set(ax3, 'xlim', [tim5 tim6]); set(ax4, 'xlim', [tim5 tim6]); set(ax5, 'xlim', [tim5 tim6]);
     else
-        val = [(round(Vslid1) - 1) * dx, round(Vslid1) * dx]; set(ax3, 'xlim', val); set(ax4, 'xlim', val);
+        val = [(round(Vslid1) - 1) * dx, round(Vslid1) * dx]; set(ax3, 'xlim', val); set(ax4, ...
+            'xlim', val);
         set(ax5, 'xlim', val);
     end
 end
@@ -249,11 +261,13 @@ function Sli2(~, ~, ~)
     if S.bpeak.Value == 1
         delete(Y1); Y1 = plot(ax5, [tim5 tim6], abs([Vslid, Vslid]), '--r', 'linewidth', 2);
         delete(Y2); Y2 = plot(ax5, [tim5 tim6], -1 * abs([Vslid, Vslid]), '--r', 'linewidth', 2);
-        legend(ax5, 'Signal', ['\sigma:', num2str(Sigma)], ['Thr^+:', num2str(abs(Vslid))], ['Thr^-:-', ...
+        legend(ax5, 'Signal', ['\sigma:', num2str(Sigma)], ['Thr^+:', num2str(abs(Vslid))], [ ...
+            'Thr^-:-', ...
             num2str(abs(Vslid))], 'Orientation', 'horizontal');
     else
         delete(Y1); Y1 = plot(ax5, [tim5 tim6], [Vslid, Vslid], '--r', 'linewidth', 2);
-        legend(ax5, 'Signal', ['\sigma:', num2str(Sigma)], ['Thr:', num2str(Vslid)], 'Orientation', 'horizontal');
+        legend(ax5, 'Signal', ['\sigma:', num2str(Sigma)], ['Thr:', num2str(Vslid)], 'Orientation', ...
+            'horizontal');
     end
 
     % Update detection type based on threshold value
@@ -271,7 +285,7 @@ function Sli2(~, ~, ~)
     end
 
     % Re-detect spikes with the updated threshold
-    [index, spikes, timspk] = DetectEvent(xf, Vpre, Vpos, Vpren, Vposn, Valig, Vslid, S);
+    [index, spikes, timspk] = detect_event(xf, Vpre, Vpos, Vpren, Vposn, Valig, Vslid, S);
     cla(ax3); axes(ax3); cla(ax4); axes(ax4);
 
     % Plot the updated spikes
@@ -291,7 +305,8 @@ function Sli2(~, ~, ~)
         for i = I3:I4
             plot(ax3, Timsp(i, :), spikes(i, :), 'm'); ax3.NextPlot = 'add';
         end
-        ax3.XTick = []; plot(ax4, [INDEX(I3:I4)' INDEX(I3:I4)'], [0 1], 'color', 'b'); ax4.XTick = []; ax4.YTick = [];
+        ax3.XTick = []; plot(ax4, [INDEX(I3:I4)' INDEX(I3:I4)'], [0 1], 'color', 'b'); 
+        ax4.XTick = []; ax4.YTick = [];
         xlim(ax4, [tim5 tim6]); xlim(ax3, [tim5 tim6]); til = legend(ax3, 'Spike waveform');
         title(til, ['Total Spikes:', num2str(length(INDEX))]);
     end

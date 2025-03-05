@@ -1,7 +1,7 @@
 %% =============================================================================================
 % ================================= Spike Extraction Software ==================================
 % ================================ Presented by: Reza Saadatyar ================================
-% ============================== Email: Reza.Saadatyar@outlook.com =============================
+% ============================= E-mail: Reza.Saadatyar@outlook.com =============================
 % ======================================= 2019-2020 ============================================
 
 % Define the function `kmeans_cluster` to perform k-means clustering
@@ -26,7 +26,7 @@ for iter = 1:Nepoch
         xj = InputClust(:, indx == j); % Get all samples assigned to cluster j
         Center(:, j) = mean(xj, 2); % Update the center of cluster j as the mean of its samples
         if isnan(Center(:, j)) % Check for NaN values in the updated center
-            t % Placeholder for handling NaN values (e.g., error handling or reinitialization)
+             % Placeholder for handling NaN values (e.g., error handling or reinitialization)
         end
     end
 end

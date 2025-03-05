@@ -1,7 +1,7 @@
 %% =============================================================================================
 % ================================= Spike Extraction Software ==================================
 % ================================ Presented by: Reza Saadatyar ================================
-% ============================== Email: Reza.Saadatyar@outlook.com =============================
+% ============================= E-mail: Reza.Saadatyar@outlook.com =============================
 % ======================================= 2019-2020 ============================================
 
 % Function to perform clustering on input data
@@ -9,7 +9,11 @@ function Labels = clustering(InputClust, clus, numcl, inpclust, ax13, S, cm)
 
 % Initialize Labels to 0 and set axes properties for plotting
 Labels = 0; 
-ax13.NextPlot = 'replaceall'; % Ensure plots replace existing content in the axes
+% Clear axes and prepare for plotting
+cla(S.ax(13)); axes(S.ax(13)); S.ax(13).NextPlot = 'replaceall';
+cla(S.ax(14)); axes(S.ax(14)); S.ax(14).NextPlot = 'replaceall';
+cla(S.ax(15)); axes(S.ax(15)); S.ax(15).NextPlot = 'replaceall';
+cla(S.ax(16)); axes(S.ax(16)); S.ax(16).NextPlot = 'replaceall';
 
 % Reset GUI parameters for clustering and firing rate analysis
 S.plotR.Value = 1; S.plotSU.Value = 0; S.plotPhU.Value = 0; S.binTime.Value = 1; 
@@ -25,6 +29,15 @@ end
 % Check if clustering method (manual or automatic) is selected
 if (S.auto.Value == 0) && (S.manual.Value == 0)
     msgbox('Please Select Manual OR Automatic', '', 'warn'); 
+    return; 
+end
+
+dcm = datacursormode; % Enable data cursor mode
+dcm.DisplayStyle = 'datatip'; % Configure data cursor
+if S.auto.Value == 1; set(S.cursor, 'Value', 0); dcm.Enable = 'off'; end
+
+if (S.manual.Value == 1) && (S.cursor.Value ~=1)
+    msgbox('Please Select Enable Cursor Mode', '', 'warn'); 
     return; 
 end
 
@@ -68,6 +81,7 @@ if NumClus ~= 1
     if (VClus == 1) || (VClus == 2) || (VClus == 4)
         set(numcl, 'enable', 'on'); % Enable number of clusters input
         if S.auto.Value == 1
+            set(S.cursor, 'Value', 0)
             % Randomly initialize cluster centers
             ind = randperm(size(InputClust, 1)); 
             Center(:, 1) = InputClust(ind(1:1), :)';
@@ -86,11 +100,13 @@ if NumClus ~= 1
             end
         %% =================================== Manual Center ===================================
         elseif S.manual.Value == 1
+            set(S.cursor, 'Value', 1)
             % Manually input cluster centers
             Center = zeros(size(InputClust, 2), NumClus);
             if size(InputClust, 2) == 2
                 for i = 1:NumClus
-                    y = str2double(inputdlg({'Enter X', 'Enter Y'}, ['Class ', num2str(i)], [1 40; 1 40]));
+                    y = str2double(inputdlg({'Enter X', 'Enter Y'}, ['Class ', num2str(i)], [1 40; ...
+                        1 40]));
                     if isnan(sum(y(:))) || isempty(y)
                         msgbox('Please enter X and Y as scalars', '', 'warn'); 
                         return; 
@@ -99,7 +115,8 @@ if NumClus ~= 1
                 end
             elseif size(InputClust, 2) == 3
                 for i = 1:NumClus
-                    y = str2double(inputdlg({'Enter X', 'Enter Y', 'Enter Z'}, ['Class ', num2str(i)], [1 40; 1 40; 1 40]));
+                    y = str2double(inputdlg({'Enter X', 'Enter Y', 'Enter Z'}, ['Class ', num2str(i)], ...
+                        [1 40; 1 40; 1 40]));
                     if isnan(sum(y(:))) || isempty(y)
                         msgbox('Please enter X, Y and Z as scalars', '', 'warn'); 
                         return; 
@@ -136,7 +153,8 @@ if NumClus ~= 1
     if size(InputClust, 1) == 2
         % 2D plot for clustering results
         for i = L
-            plot(ax13, InputClust(1, Labels == i), InputClust(2, Labels == i), '.', 'color', Col(i, :));
+            plot(ax13, InputClust(1, Labels == i), InputClust(2, Labels == i), '.', 'color', ...
+                Col(i, :));
             ax13.NextPlot = 'add'; 
             Tlegend{i} = ['class ' num2str(i)];
         end
@@ -155,7 +173,9 @@ if NumClus ~= 1
     elseif size(InputClust, 1) == 3
         % 3D plot for clustering results
         for i = L
-            plot3(ax13, InputClust(1, Labels == i), InputClust(2, Labels == i), InputClust(3, Labels == i), '.', 'color', Col(i, :));
+            plot3(ax13, InputClust(1, Labels == i), InputClust(2, Labels == i), InputClust(3, ...
+                Labels == i), ...
+                '.', 'color', Col(i, :));
             ax13.NextPlot = 'add'; 
             Tlegend{i} = ['class ' num2str(i)];
         end

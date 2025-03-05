@@ -1,7 +1,7 @@
 %% =============================================================================================
 % ================================= Spike Extraction Software ==================================
 % ================================ Presented by: Reza Saadatyar ================================
-% ============================== Email: Reza.Saadatyar@outlook.com =============================
+% ============================= E-mail: Reza.Saadatyar@outlook.com =============================
 % ======================================= 2019-2020 ============================================
 
 function MeanSpike = plot_cluster_spike_events(spikes, Labels, fss, plotSU, ax15, cm)
@@ -38,10 +38,10 @@ if get(plotSU, 'value') == 1
     end
 
     % Check if the sampling frequency is valid
-    if isnan(fss) || (fss <= 0)
-        fss = str2double(inputdlg({'Enter Fs'}, 'Sampling Frequency ', [1 45]));  % Prompt for sampling frequency
-        if isnan(sum(fss(:))) || isempty(fss)
-            msgbox('Please Enter Fs as scalars', '', 'warn');  % Show warning if sampling frequency is invalid
+    if isnan(fss) || (fss <= 0) % Prompt for sampling frequency
+        fss = str2double(inputdlg({'Enter Fs'}, 'Sampling Frequency ', [1 45]));  
+        if isnan(sum(fss(:))) || isempty(fss) % Show warning if sampling frequency is invalid
+            msgbox('Please Enter Fs as scalars', '', 'warn');  
             return;
         end
     end

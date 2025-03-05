@@ -1,7 +1,7 @@
 %% =============================================================================================
 % ================================= Spike Extraction Software ==================================
 % ================================ Presented by: Reza Saadatyar ================================
-% ============================== Email: Reza.Saadatyar@outlook.com =============================
+% ============================= E-mail: Reza.Saadatyar@outlook.com =============================
 % ======================================= 2019-2020 ============================================
 
 function [str, FF, Data, values] = load_data(inp, text1)
@@ -54,7 +54,7 @@ elseif strcmp(str,'mat')
     % Convert the struct to a cell array and extract the data
     Val=struct2cell(values);Data=cell2mat(Val(1));
     % Set the input dropdown menu to the field names
-    u{1}='Select Input';set(inp,'value',1,'string',u);
+    u{1}='Select:';set(inp,'value',1,'string',u);
 elseif strcmp(str,'txt')
     % If the file is a text file, load the data
     values= load([PP,FF]);Data=values;
