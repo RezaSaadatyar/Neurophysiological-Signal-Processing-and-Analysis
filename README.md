@@ -4,6 +4,13 @@ This repository contains an extensive collection of tools and scripts for proces
 **Related Article**:<br/>
 [Restoring the firing activity of ventral tegmental area neurons by lateral hypothalamic deep brain stimulation following morphine administration in rats](https://www.sciencedirect.com/science/article/abs/pii/S0031938423001348).
 
+## What do you Learn
+- Spike Detection: Identifying action potentials (spikes) in neural signals using techniques like amplitude threshold discrimination.
+- Feature Extraction: Extracting relevant features from signals for further analysis.
+- Clustering: Grouping similar neural signals or patterns, potentially using methods like k-means or fuzzy c-means clustering.
+- Firing Rate Analysis: Analyzing the frequency of neural spikes to understand neural activity.
+- Interspike Interval (ISI) Analysis: Measures the time intervals between consecutive spikes in a neuron’s firing sequence. ISI is critical for analyzing firing patterns, such as bursting or regular spiking, and can reveal insights into neuronal excitability and network dynamics.
+
 ## Demo
 https://github.com/user-attachments/assets/63ad798b-1b53-4c0c-a431-453ac2859a92
 
