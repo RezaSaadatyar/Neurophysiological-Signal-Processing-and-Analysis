@@ -7,7 +7,7 @@ This repository contains an extensive collection of tools and scripts for proces
 ## Demo
 https://github.com/user-attachments/assets/63ad798b-1b53-4c0c-a431-453ac2859a92
 
-## Steps in the Pipeline
+## Software Outline
 
 1. **Data Import and Preprocessing**
    - Import data from various formats (e.g., `.mat`, `.txt`, `.xlsx`).
