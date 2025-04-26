@@ -1,4 +1,4 @@
-# Neurophysiological Signal Processing and Analysis
+## Neurophysiological Signal Processing and Analysis
 This repository contains an extensive collection of tools and scripts for processing and analyzing neurophysiological signals. The primary focus is on various critical aspects of neurophysiological data handling, including spike detection, feature extraction, clustering, and firing rate analysis. The software is intended for researchers and practitioners in the field of neuroscience who require reliable and efficient tools to analyze complex neural data.
 
 **Related Article**:<br/>
